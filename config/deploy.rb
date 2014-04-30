@@ -62,3 +62,11 @@ namespace :deploy do
   end
   before "deploy", "deploy:check_revision"
 end
+
+
+
+def template(from, to, with_env = false)
+  from = "#{from}.#{stage}" if with_env
+  tpl = File.read(File.expand_path("../templates/#{from}.erb", __FILE__))
+  put ERB.new(tpl).result(binding), to
+end
