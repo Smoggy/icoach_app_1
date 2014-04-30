@@ -4,8 +4,8 @@ require 'capistrano/sidekiq'
 require 'capistrano-unicorn'
 
 set :stages, %w(production staging)
-set :default_stage, "staging"
-require 'capistrano/ext/multistage'
+set :stage, ARGV.select { |arg| stages.include? arg }.first || 'staging'
+load "config/deploy/#{stage}.rb"
 
 set(:unicorn_env) { rails_env }
 
@@ -14,6 +14,7 @@ set :user, "deployer"
 set :port, 1026
 set :deploy_to, "/home/#{user}/rails_apps/#{fetch :rails_env}/#{application}"
 set :current_path, File.join(deploy_to, current_dir)
+set :shared_path,  File.join(deploy_to, shared_dir) 
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
