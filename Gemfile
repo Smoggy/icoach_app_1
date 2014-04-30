@@ -34,6 +34,18 @@ gem "unicorn"
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'net-ssh', '2.7.0'
+
+
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'twitter'
+gem 'fb_graph'
+
+gem "mini_magick"
+gem 'carrierwave'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

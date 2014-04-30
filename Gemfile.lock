@@ -27,7 +27,11 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (5.0.1.20140414130214)
+    attr_required (1.0.0)
+    bcrypt (3.1.7)
+    buftok (0.2.0)
     builder (3.2.2)
     capistrano (2.15.5)
       highline
@@ -42,6 +46,11 @@ GEM
       sidekiq
     capistrano-unicorn (0.2.0)
       capistrano (< 3.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coderay (1.1.0)
@@ -53,10 +62,29 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     connection_pool (2.0.0)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.0.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    fb_graph (2.7.13)
+      httpclient (>= 2.2.0.2)
+      multi_json (>= 1.3)
+      rack-oauth2 (>= 0.14.4)
+      tzinfo
+    hashie (2.1.1)
     highline (1.6.21)
     hike (1.2.3)
+    http (0.5.0)
+      http_parser.rb
+    http_parser.rb (0.6.0)
+    httpclient (2.3.4.1)
     i18n (0.6.9)
     jbuilder (2.0.6)
       activesupport (>= 3.0.0, < 5)
@@ -65,14 +93,23 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    jwt (0.1.11)
+      multi_json (>= 1.5)
     kgio (2.9.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_magick (3.7.0)
+      subexec (~> 0.2.1)
     minitest (5.3.3)
     multi_json (1.9.3)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
+    naught (1.0.0)
     net-scp (1.2.0)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -80,6 +117,30 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    oauth (0.4.7)
+    oauth2 (0.9.3)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 0.1.8)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
+    omniauth (1.2.1)
+      hashie (>= 1.2, < 3)
+      rack (~> 1.0)
+    omniauth-facebook (1.6.0)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.1.2)
+      faraday (>= 0.8, < 0.10)
+      multi_json (~> 1.3)
+      oauth2 (~> 0.9.3)
+      omniauth (~> 1.2)
+    omniauth-twitter (1.0.1)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
+    orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -87,6 +148,12 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-oauth2 (1.0.8)
+      activesupport (>= 2.3)
+      attr_required (>= 0.0.5)
+      httpclient (>= 2.2.0.2)
+      multi_json (>= 1.3.6)
+      rack (>= 1.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.0)
@@ -128,6 +195,7 @@ GEM
       json
       redis (>= 3.0.6)
       redis-namespace (>= 1.3.1)
+    simple_oauth (0.2.0)
     slop (3.5.0)
     spring (1.1.2)
     sprockets (2.11.0)
@@ -139,6 +207,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    subexec (0.2.3)
     thor (0.19.1)
     thread_safe (0.3.3)
     tilt (1.4.1)
@@ -148,6 +217,17 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.2.2)
       coffee-rails
+    twitter (5.8.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
+      http (~> 0.5.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.2.0)
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
     uglifier (2.5.0)
@@ -157,6 +237,8 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -166,10 +248,16 @@ DEPENDENCIES
   capistrano-maintenance
   capistrano-sidekiq
   capistrano-unicorn
+  carrierwave
   coffee-rails (~> 4.0.0)
+  devise
+  fb_graph
   jbuilder (~> 2.0)
   jquery-rails
+  mini_magick
   net-ssh (= 2.7.0)
+  omniauth-facebook
+  omniauth-twitter
   pg
   pry
   rails (= 4.1.0)
@@ -178,5 +266,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   turbolinks
+  twitter
   uglifier (>= 1.3.0)
   unicorn

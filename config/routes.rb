@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
   controller :users do
-    get 'api/index' => 'users#index'
+    post 'api/create' => 'users#create'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
