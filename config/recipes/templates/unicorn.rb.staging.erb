@@ -1,0 +1,5 @@
+working_directory '<%= current_path %>'
+pid '<%= current_path %>/tmp/pids/unicorn.pid'
+listen '/tmp/unicorn.<%= stage %>.<%= application %>.sock'
+worker_processes 1
+timeout 30

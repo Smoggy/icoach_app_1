@@ -4,6 +4,8 @@ require 'capistrano/sidekiq'
 require 'capistrano-unicorn'
 require 'capistrano/ext/multistage'
 
+load 'config/recipes/unicorn'
+
 set :stages, %w(production staging)
 set :stage, ARGV.select { |arg| stages.include? arg }.first || 'staging'
 load "config/deploy/#{stage}.rb"
