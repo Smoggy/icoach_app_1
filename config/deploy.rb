@@ -2,6 +2,7 @@ require "bundler/capistrano"
 require "rvm/capistrano"
 require 'capistrano/sidekiq'
 require 'capistrano-unicorn'
+require 'capistrano/ext/multistage'
 
 set :stages, %w(production staging)
 set :stage, ARGV.select { |arg| stages.include? arg }.first || 'staging'
@@ -36,8 +37,8 @@ namespace :deploy do
   end
 
   task :setup_config, roles: :app do
-    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-    sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
+    #sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+    sudo "ln -nfs #{current_path}/config/#{ rails_env }_unicorn_init.sh /etc/init.d/#{ rails_env }_unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
     puts "Now edit #{shared_path}/config/database.yml and add your username and password"
