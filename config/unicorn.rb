@@ -1,4 +1,4 @@
-root = "/home/deployer/rails_apps/#{fetch :unicorn_env }/icoach_app/current"
+root = "/home/deployer/rails_apps/#{ unicorn_env }/icoach_app/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
