@@ -1,10 +1,10 @@
-root = "/home/deployer/rails_apps/#{ unicorn_env }/icoach_app/current"
+root = "/home/deployer/rails_apps/<%= fetch :unicorn_env %>/icoach_app/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
 stdout_path "#{root}/log/unicorn.log"
 
-listen "/tmp/unicorn.#{fetch :unicorn_env }.icoach_app.sock"
+listen "/tmp/unicorn.<%= fetch :unicorn_env %>.icoach_app.sock"
 worker_processes 2
 timeout 30
 
